@@ -28,8 +28,8 @@ type ADCHandler func(*Monome, uint, uint) error
 // ButtonHandler is a function that can be run when a Button message is received.
 type ButtonHandler func(*Monome, uint, uint, uint) error
 
-// FindMonomes returns a new monome for each device found under /dev/*
-func FindMonomes(debug bool) (monomes []*Monome) {
+// Find returns a new monome for each matching device found under /dev/*
+func Find(debug bool) (monomes []*Monome) {
 	/*
 	 * Right now, this only works on OSX where the device name is
 	 * distinct.
