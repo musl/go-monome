@@ -81,7 +81,13 @@ func NewMonome(portPath string, debug bool) *Monome {
 
 // NewMonomeConfig returns a new Monome with a given `*serial.Config`
 func NewMonomeConfig(serialConfig *serial.Config, debug bool) *Monome {
-	return &Monome{serialConfig: serialConfig, Debug: debug}
+	return &Monome{
+		serialConfig:   serialConfig,
+		ledState:       [8]byte{},
+		buttonHandlers: make([]ButtonHandler, 0),
+		adcHandlers:    make([]ADCHandler, 0),
+		Debug:          debug,
+	}
 }
 
 // Open attepmts to open the device.
