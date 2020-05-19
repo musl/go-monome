@@ -17,6 +17,10 @@ func main() {
 	flag.Parse()
 
 	monomes := monome.Find(*debug)
+	if len(monomes) < 1 {
+		log.Fatal("Couldn't find anything.")
+	}
+
 	m := monomes[0]
 
 	m.ButtonChanged(func(m *monome.Monome, x, y, s uint) error {
