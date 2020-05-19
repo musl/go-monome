@@ -24,11 +24,16 @@ func main() {
 	m := monomes[0]
 
 	m.ButtonChanged(func(m *monome.Monome, x, y, s uint) error {
+		if s == 1 {
+			return nil
+		}
 		return m.LED(x, y).Toggle()
 	})
 
 	m.Open()
 	defer m.Close()
+
+	m.Clear()
 
 	log.Fatal(m.Loop())
 }
