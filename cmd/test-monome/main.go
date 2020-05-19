@@ -35,15 +35,23 @@ func main() {
 	defer m.Close()
 
 	m.Clear()
-	m.Row(1).On()
-	time.Sleep(500 * time.Millisecond)
-	m.Row(1).Off()
-	time.Sleep(500 * time.Millisecond)
+	for i := uint(0); i < 7; i++ {
+		m.LED(i, i).On()
+	}
+	time.Sleep(100 * time.Millisecond)
+	m.Clear()
 
-	m.Column(1).On()
-	time.Sleep(500 * time.Millisecond)
-	m.Column(1).Off()
-	time.Sleep(500 * time.Millisecond)
+	for i := uint(0); i < 7; i++ {
+		m.Row(i).On()
+		time.Sleep(100 * time.Millisecond)
+		m.Row(i).Off()
+		time.Sleep(100 * time.Millisecond)
+
+		m.Column(i).On()
+		time.Sleep(100 * time.Millisecond)
+		m.Column(i).Off()
+		time.Sleep(100 * time.Millisecond)
+	}
 
 	log.Fatal(m.Loop())
 }
