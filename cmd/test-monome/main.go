@@ -35,13 +35,13 @@ func main() {
 	defer m.Close()
 
 	m.Clear()
-	for i := uint(0); i < 7; i++ {
+	for i := uint(0); i < 8; i++ {
 		m.LED(i, i).On()
 	}
 	time.Sleep(100 * time.Millisecond)
 	m.Clear()
 
-	for i := uint(0); i < 7; i++ {
+	for i := uint(0); i < 8; i++ {
 		m.Row(i).On()
 		time.Sleep(100 * time.Millisecond)
 		m.Row(i).Off()
