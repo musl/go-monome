@@ -295,12 +295,12 @@ func (m *Monome) Row(y uint) *Row {
 }
 
 // On turns on all of the given LEDs in a row.
-func (r *Row) On(b byte) error {
+func (r *Row) On() error {
 	return r.parent.Write([2]byte{0x80, 0xff})
 }
 
 // Off turns off all of the given LEDs in a row.
-func (r *Row) Off(b byte) error {
+func (r *Row) Off() error {
 	return r.parent.Write([2]byte{0x80, 0})
 }
 
@@ -321,12 +321,12 @@ func (m *Monome) Column(x uint) *Column {
 }
 
 // On turns on all of the given LEDs in a column.
-func (c *Column) On(b byte) error {
+func (c *Column) On() error {
 	return c.parent.Write([2]byte{0x80, 0xff})
 }
 
 // Off turns off all of the given LEDs in a column.
-func (c *Column) Off(b byte) error {
+func (c *Column) Off() error {
 	return c.parent.Write([2]byte{0x80, 0})
 }
 
