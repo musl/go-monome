@@ -1,6 +1,6 @@
 github.com/goburrow/serial v0.1.0 h1:v2T1SQa/dlUqQiYIT8+Cu7YolfqAi3K96UmhwYyuSrA=
 github.com/goburrow/serial v0.1.0/go.mod h1:sAiqG0nRVswsm1C97xsttiYCzSLBmUZ/VSlVLZJ8haA=
-github.com/musl/go-monome v0.1.1 h1:JvghZX5TsYdUx97oJF3xmqGLtwU9kgAPq80iOJyE0Y4=
-github.com/musl/go-monome v0.1.1/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
-github.com/musl/go-monome v0.1.2-0.20200519010610-da7e47b5df48 h1:k1xc0jvdUfjcB8juC4TeA5zo1a/1I2px6t5vEWZjFjE=
-github.com/musl/go-monome v0.1.2-0.20200519010610-da7e47b5df48/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
+github.com/musl/go-monome v0.1.3 h1:Te16DU4cbSJXyG7Sa0g3F7VrF3rag53wJNwXfNdPpwI=
+github.com/musl/go-monome v0.1.3/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
+github.com/musl/go-monome v0.1.4 h1:kibTL/zm7z2pwWYMhSMsXDDrLM19VNVnljRLZkklgm0=
+github.com/musl/go-monome v0.1.4/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=

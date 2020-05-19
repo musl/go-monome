@@ -4,6 +4,7 @@ import (
 	"flag"
 	"log"
 	"os"
+	"time"
 
 	"github.com/musl/go-monome"
 )
@@ -34,6 +35,15 @@ func main() {
 	defer m.Close()
 
 	m.Clear()
+	m.Row(1).On()
+	time.Sleep(500 * time.Millisecond)
+	m.Row(1).Off()
+	time.Sleep(500 * time.Millisecond)
+
+	m.Column(1).On()
+	time.Sleep(500 * time.Millisecond)
+	m.Column(1).Off()
+	time.Sleep(500 * time.Millisecond)
 
 	log.Fatal(m.Loop())
 }
