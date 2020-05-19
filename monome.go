@@ -207,7 +207,7 @@ func (m *Monome) Brightness(v float64) error {
 	if v < 0.0 {
 		v = 0.0
 	}
-	return m.Write([2]byte{0x30, byte(0xff * v)})
+	return m.Write([2]byte{0x30, byte(0x0f * v)})
 }
 
 // Clear discards the LED state and turns off all LEDs.
