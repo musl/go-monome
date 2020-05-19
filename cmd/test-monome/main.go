@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"log"
+	"math/rand"
 	"os"
 	"time"
 
@@ -10,6 +11,8 @@ import (
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+
 	log.SetOutput(os.Stderr)
 	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 	log.SetPrefix(` `)
@@ -34,23 +37,46 @@ func main() {
 	m.Open()
 	defer m.Close()
 
-	m.Clear()
 	for i := uint(0); i < 8; i++ {
-		m.LED(i, i).On()
+		m.Row(i).On()
 	}
-	time.Sleep(100 * time.Millisecond)
-	m.Clear()
+
+	m.Brightness(0.1)
+
+	for i := 0; i < 1000; i++ {
+		x, y := uint(rand.Uint32())&0x0f, uint(rand.Uint32())&0x0f
+
+		if rand.Float64() > 0.5 {
+			m.LED(x, y).On()
+			continue
+		}
+
+		m.LED(x, y).Off()
+		time.Sleep(1 * time.Millisecond)
+	}
 
 	for i := uint(0); i < 8; i++ {
 		m.Row(i).On()
-		time.Sleep(100 * time.Millisecond)
-		m.Row(i).Off()
-		time.Sleep(100 * time.Millisecond)
-
+		time.Sleep(10 * time.Millisecond)
 		m.Column(i).On()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
+
+		m.Row(i).Off()
+		time.Sleep(10 * time.Millisecond)
 		m.Column(i).Off()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
+	}
+
+	for i := uint(7); i > 0; i-- {
+		m.Row(i).On()
+		time.Sleep(10 * time.Millisecond)
+		m.Column(i).On()
+		time.Sleep(10 * time.Millisecond)
+
+		m.Row(i).Off()
+		time.Sleep(10 * time.Millisecond)
+		m.Column(i).Off()
+		time.Sleep(10 * time.Millisecond)
 	}
 
 	log.Fatal(m.Loop())

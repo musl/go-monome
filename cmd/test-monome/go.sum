@@ -8,3 +8,7 @@ github.com/musl/go-monome v0.1.5 h1:i2oJTxZvX+mG13RM58wvkdq7FldOc/rPwBwC77yYdhU=
 github.com/musl/go-monome v0.1.5/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
 github.com/musl/go-monome v0.1.6 h1:8Lkj33o7P+4qvWlL4JeRUB/kAEMTZLsxGnD9xlOb4dg=
 github.com/musl/go-monome v0.1.6/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
+github.com/musl/go-monome v0.1.7 h1:sOQwrKDtPzQ2nnRPkOYXfUWZqhUfrW9l52VAL0fvJGo=
+github.com/musl/go-monome v0.1.7/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
+github.com/musl/go-monome v0.1.8 h1:/2HkHz232YB9TFlhibIxF8cTkM5pP7x+JD0wF/Hht0o=
+github.com/musl/go-monome v0.1.8/go.mod h1:b003Kn7nsCtxeAID+RsRBUlPzsNtnXpsu67MJJTwXUI=
