@@ -150,7 +150,7 @@ func (m *Monome) handle(message [2]byte) error {
 	}
 
 	if m.Debug {
-		log.Printf("Unknown message received: %v", message)
+		log.Printf("Unknown message received: %02x %02x", message[0], message[1])
 	}
 	return nil
 }
@@ -181,7 +181,7 @@ func (m *Monome) Write(message [2]byte) error {
 	}
 
 	if m.Debug {
-		log.Printf("Wrote: %v", message)
+		log.Printf("Wrote: %02x %02x", message[0], message[1])
 	}
 
 	return nil
