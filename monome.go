@@ -181,6 +181,17 @@ func (m *Monome) Write(message [2]byte) error {
 	return nil
 }
 
+// ADC represents a ADC input.
+type ADC struct {
+	parent *Monome
+	n      byte
+}
+
+// ADC returns a new ADC
+func (m *Monome) ADC(n uint) *ADC {
+	return &ADC{parent: m, n: byte(n) & 0x0f}
+}
+
 // Brightness sets the brightness of all LEDs given by a float between 0
 // and 1 inclusive. 0 is off, 1.0 is full brightness.
 func (m *Monome) Brightness(v float64) error {
@@ -199,17 +210,6 @@ func (m *Monome) Clear() error {
 	return m.WriteState()
 }
 
-// ADC represents a ADC input.
-type ADC struct {
-	parent *Monome
-	n      byte
-}
-
-// ADC returns a new ADC
-func (m *Monome) ADC(n uint) *ADC {
-	return &ADC{parent: m, n: byte(n) & 0x0f}
-}
-
 // Enable turns a given ADC on.
 func (a *ADC) Enable() error {
 	return a.parent.Write([2]byte{0x50, ((a.n & 0x7) << 4) | 1})
@@ -220,12 +220,6 @@ func (a *ADC) Disable() error {
 	return a.parent.Write([2]byte{0x50, (a.n & 0x7) << 4})
 }
 
-// LED returns a given LED on the given Monome, clamping the values of x
-// and y to 0-7.
-func (m *Monome) LED(x, y uint) *LED {
-	return &LED{x: byte(x) & 7, y: byte(y) & 7}
-}
-
 // LEDTest tells the device to turn on or off all of the LEDs without
 // updating internal state.
 func (m *Monome) LEDTest(on bool) error {
@@ -234,11 +228,6 @@ func (m *Monome) LEDTest(on bool) error {
 	}
 
 	return m.Write([2]byte{0x40, 0})
-}
-
-// Row returns a given Row of LEDs on the monome.
-func (m *Monome) Row(y uint) *Row {
-	return &Row{parent: m, y: byte(y) & 0x07}
 }
 
 // Shutdown turns the monome off.
@@ -261,6 +250,12 @@ func (m *Monome) WriteState() error {
 type LED struct {
 	parent *Monome
 	x, y   byte
+}
+
+// LED returns a given LED on the given Monome, clamping the values of x
+// and y to 0-7.
+func (m *Monome) LED(x, y uint) *LED {
+	return &LED{parent: m, x: byte(x) & 7, y: byte(y) & 7}
 }
 
 // On turns a given LED on
@@ -288,6 +283,11 @@ type Row struct {
 	y      byte
 }
 
+// Row returns a given Row of LEDs on the monome.
+func (m *Monome) Row(y uint) *Row {
+	return &Row{parent: m, y: byte(y) & 0x07}
+}
+
 // On turns on all of the given LEDs in a row.
 func (r *Row) On(b byte) error {
 	return r.parent.Write([2]byte{0x80, 0xff})
@@ -307,6 +307,11 @@ func (r *Row) Set(b byte) error {
 type Column struct {
 	parent *Monome
 	x      byte
+}
+
+// Column returns a given Row of LEDs on the monome.
+func (m *Monome) Column(x uint) *Column {
+	return &Column{parent: m, x: byte(x) & 0x07}
 }
 
 // On turns on all of the given LEDs in a column.
